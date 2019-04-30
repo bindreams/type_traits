@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="zh\type_traits.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\remove_all_pointers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\defines_type.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\enable_if_defined.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\has_size.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_bidirectional.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_bidirectional_range.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_forward.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_function_like.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_input.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_less_cv.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_more_cv.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_output.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_random_access.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_range.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_ratio.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_same.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_similar.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_stronger_qualified.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="zh\type_traits\is_weaker_qualified.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
