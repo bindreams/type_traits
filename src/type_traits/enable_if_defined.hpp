@@ -4,6 +4,7 @@ namespace zh {
 
 template<class T, class R = void>
 struct enable_if_defined {
+	/// enable_if_defined is a helper class for defines_type.
 	using type = R;
 };
 

@@ -1,7 +1,8 @@
 #pragma once
 
-#include "type_traits/enable_if_defined.hpp"
+#include "type_traits/defines_macro.hpp"
 #include "type_traits/defines_type.hpp"
+#include "type_traits/enable_if_defined.hpp"
 #include "type_traits/has_size.hpp"
 #include "type_traits/is_ratio.hpp"
 #include "type_traits/is_function_like.hpp"
