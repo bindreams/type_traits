@@ -8,6 +8,7 @@
 #include "type_traits/is_function_like.hpp"
 #include "type_traits/is_same.hpp"
 #include "type_traits/is_similar.hpp"
+#include "type_traits/is_virtual_base_of.hpp"
 
 #include "type_traits/is_range.hpp"
 #include "type_traits/is_bidirectional_range.hpp"

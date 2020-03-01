@@ -28,6 +28,6 @@ int main() {
 	testing::InitGoogleTest();
 	int result = RUN_ALL_TESTS();
 
-	//system("PAUSE");
+	system("PAUSE");
 	return result;
 }
