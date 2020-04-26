@@ -5,8 +5,8 @@
 namespace zh {
 
 template<class Iterator>
-struct is_random_access
-	: std::is_base_of<
+struct is_random_access :
+	std::is_base_of<
 		std::random_access_iterator_tag,
 		typename std::iterator_traits<Iterator>::iterator_category> {
 };
