@@ -11,7 +11,7 @@ def get_project_version():
     except Exception:
         return None
 
-		
+
 def get_project_name():
     try:
         content = tools.load("CMakeLists.txt")
@@ -49,11 +49,7 @@ class Project(ConanFile):
     
     generators = "cmake"
 
-    def imports(self):
-        self.copy("*.dll", "", "bin")
-        self.copy("*.dylib", "", "lib")
-
-    def build(self):
+    def _cmake(self):
         cmake = CMake(self, generator="Ninja")
         cmake.definitions["CMAKE_EXPORT_COMPILE_COMMANDS"] = True
 
@@ -61,6 +57,31 @@ class Project(ConanFile):
             cmake.definitions[self.name + "_BUILD_TESTS"] = True
         if self.options.examples:
             cmake.definitions[self.name + "_BUILD_EXAMPLES"] = True
+        
+        return cmake
+
+    def build(self):
+        cmake = self._cmake()
 
         cmake.configure()
         cmake.build()
+        
+    def package(self):
+        self.copy(
+            pattern="*license*", 
+            dst="licenses", 
+            excludes="tools/*", 
+            ignore_case=True, 
+            keep_path=False
+        )
+
+        cmake = self._cmake()
+
+        cmake.configure()
+        cmake.install()
+
+    def package_info(self):
+        self.cpp_info.libs = [self.name]
+
+    def package_id(self):
+        self.info.header_only()

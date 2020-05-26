@@ -43,7 +43,7 @@ add_library(${namespace}::${target_name} ALIAS ${target_name})
 
 # Installation
 install_targets(${target_name})
-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src"
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/"
 	DESTINATION include
 	COMPONENT Devel
 )
