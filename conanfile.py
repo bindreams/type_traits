@@ -27,7 +27,7 @@ class Project(ConanFile):
     version = get_project_version()
 
     settings = "os", "compiler", "build_type", "arch"
-    requires = ["doctest/2.3.7"]
+    requires = []
 
     options = {
         "tests": [True, False],
@@ -47,9 +47,9 @@ class Project(ConanFile):
         "submodule": "recursive"
     }
     
-    generators = "cmake"
+    generators = "cmake_find_package"
 
-    def _cmake(self):
+    def _configure_cmake(self):
         cmake = CMake(self, generator="Ninja")
         cmake.definitions["CMAKE_EXPORT_COMPILE_COMMANDS"] = True
 
@@ -58,30 +58,20 @@ class Project(ConanFile):
         if self.options.examples:
             cmake.definitions[self.name + "_BUILD_EXAMPLES"] = True
         
+        cmake.configure()
         return cmake
 
     def build(self):
-        cmake = self._cmake()
-
-        cmake.configure()
+        cmake = self._configure_cmake()
         cmake.build()
         
+    def build_requirements(self):
+        if self.options.tests:
+            self.build_requires("doctest/2.3.7")
+
     def package(self):
-        self.copy(
-            pattern="*license*", 
-            dst="licenses", 
-            excludes="tools/*", 
-            ignore_case=True, 
-            keep_path=False
-        )
-
-        cmake = self._cmake()
-
-        cmake.configure()
+        cmake = self._configure_cmake()
         cmake.install()
-
-    def package_info(self):
-        self.cpp_info.libs = [self.name]
 
     def package_id(self):
         self.info.header_only()

@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.15)
 project(type_traits LANGUAGES CXX VERSION 0.1.0)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake-scripts/cmake")
-include(scripts)
+include("${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/install.cmake")
+include("${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/static_analysis.cmake")
+include("${CMAKE_CURRENT_SOURCE_DIR}/tools/cmake/warnings.cmake")
 
-# Package manager
-conan_init(cmake)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
 
 # Tooling
 #enable_clang_tidy()
@@ -18,9 +18,6 @@ set(namespace zh)
 
 option(${PROJECT_NAME}_BUILD_TESTS "Build project tests." OFF)
 option(${PROJECT_NAME}_BUILD_EXAMPLES "Build project examples." OFF)
-
-# Dependencies
-# find_package(...)
 
 # Sources
 file(GLOB_RECURSE sources RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/src" CONFIGURE_DEPENDS
@@ -51,18 +48,11 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/"
 # Generate configuration files and install the package
 configure_and_install(${CMAKE_SCRIPTS_ROOT}/simple-config.cmake.in ${namespace} SameMajorVersion)
 
-# Examples =============================================================================================================
-if(${PROJECT_NAME}_BUILD_EXAMPLES)
-	message(STATUS "Building ${PROJECT_NAME} examples")
-
-	add_executable(${target_name}_example)
-	target_sources(${target_name}_example PRIVATE "examples/example.cpp")
-	target_link_libraries(${target_name}_example PRIVATE ${namespace}::${target_name})
-endif()
-
 # Tests ================================================================================================================
 if(${PROJECT_NAME}_BUILD_TESTS)
 	message(STATUS "Building ${PROJECT_NAME} tests")
+
+	find_package(doctest REQUIRED)
 
 	file(GLOB_RECURSE sources CONFIGURE_DEPENDS
 		"tests/*.cpp"
@@ -74,6 +64,15 @@ if(${PROJECT_NAME}_BUILD_TESTS)
 	target_link_libraries(${target_name}_tests
 		PRIVATE
 			${namespace}::${target_name}
-			CONAN_PKG::doctest
+			doctest::doctest
 	)
+endif()
+
+# Examples =============================================================================================================
+if(${PROJECT_NAME}_BUILD_EXAMPLES)
+	message(STATUS "Building ${PROJECT_NAME} examples")
+
+	add_executable(${target_name}_example)
+	target_sources(${target_name}_example PRIVATE "examples/example.cpp")
+	target_link_libraries(${target_name}_example PRIVATE ${namespace}::${target_name})
 endif()

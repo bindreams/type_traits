@@ -1,6 +1,5 @@
-#include <vector>
-
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include <vector>
 #include <doctest/doctest.h>
 #include <zh/type_traits.hpp>
 
