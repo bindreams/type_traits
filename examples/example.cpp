@@ -8,7 +8,6 @@ struct comparator {
 };
 
 int main() {
-	std::cout << "old\n";
 	std::cout << defines_is_transparent_v<comparator> << "\n";
 	std::cout << defines_is_transparent_v<int> << "\n";
 }
